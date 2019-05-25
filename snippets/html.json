@@ -4,7 +4,7 @@
         "body": [
             "<base href=\"/${1:Repository}/\">"
         ],
-        "description": "https://docs.microsoft.com/en-us/aspnet/core/host-and-deploy/blazor/client-side?view=aspnetcore-3.0#github-pages"
+        "description": "See: https://docs.microsoft.com/en-us/aspnet/core/host-and-deploy/blazor/client-side?view=aspnetcore-3.0#github-pages"
     },
     "Index Script - Single Page Apps for GitHub Pages": {
         "prefix": "github-pages-spa-index",
@@ -41,7 +41,7 @@
             "</script>",
             "<!-- End Single Page Apps for GitHub Pages -->"
         ],
-        "description": "https://github.com/rafrex/spa-github-pages & https://docs.microsoft.com/en-us/aspnet/core/host-and-deploy/blazor/client-side?view=aspnetcore-3.0#github-pages"
+        "description": "See: https://github.com/rafrex/spa-github-pages & https://docs.microsoft.com/en-us/aspnet/core/host-and-deploy/blazor/client-side?view=aspnetcore-3.0#github-pages"
     },
     "404 - Single Page Apps for GitHub Pages": {
         "prefix": "github-pages-spa-404",
@@ -88,6 +88,6 @@
             "",
             "</html>"
         ],
-        "description": "https://github.com/rafrex/spa-github-pages & https://docs.microsoft.com/en-us/aspnet/core/host-and-deploy/blazor/client-side?view=aspnetcore-3.0#github-pages"
+        "description": "See: https://github.com/rafrex/spa-github-pages & https://docs.microsoft.com/en-us/aspnet/core/host-and-deploy/blazor/client-side?view=aspnetcore-3.0#github-pages"
     }
 }
