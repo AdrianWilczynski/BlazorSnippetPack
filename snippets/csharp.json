@@ -1,5 +1,5 @@
 {
-    "Foreach with Index": {
+    "Foreach with index": {
         "prefix": "foreach-index",
         "body": [
             "foreach (var (${1:value}, ${2:i}) in ${3:collection}.Select((${1}, ${2}) => (${1}, ${2})))",

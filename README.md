@@ -29,7 +29,7 @@ A snippet pack for Blazor.
 
 | Prefix                | Renders             |
 |-----------------------|---------------------|
-| foreach-index         | Foreach with Index  |
+| foreach-index         | Foreach with index  |
 | bl-param              | Parameter           |
 | bl-param-cascading    | Cascading Parameter |
 | bl-eventHandler       | Event Handler       |
