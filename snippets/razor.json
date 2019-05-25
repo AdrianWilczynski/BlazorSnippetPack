@@ -41,7 +41,8 @@
         "prefix": "bl-component-inherits",
         "body": [
             "@page \"${1:/}\"",
-            "@inherits ${2:${TM_FILENAME_BASE}Base}"
+            "@inherits ${2:${TM_FILENAME_BASE}Base}",
+            ""
         ]
     },
     "Component with Child Content": {
