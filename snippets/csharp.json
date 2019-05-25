@@ -1,0 +1,122 @@
+{
+    "Foreach with Index": {
+        "prefix": "foreach-index",
+        "body": [
+            "foreach (var (${1:value}, ${2:i}) in ${3:collection}.Select((${1}, ${2}) => (${1}, ${2})))",
+            "{",
+            "\t$0",
+            "}"
+        ]
+    },
+    "Parameter": {
+        "prefix": "bl-param",
+        "body": [
+            "[Parameter]",
+            "${1:private} ${2:string} ${3:MyParameter} { get; set; }"
+        ]
+    },
+    "Cascading Parameter": {
+        "prefix": "bl-param-cascading",
+        "body": [
+            "[CascadingParameter]",
+            "${1:private} ${2:string} ${3:MyCascadingParameter} { get; set; }"
+        ]
+    },
+    "Component Base": {
+        "prefix": "bl-component-base",
+        "body": [
+            "using System;",
+            "using System.Collections.Generic;",
+            "using System.Linq;",
+            "using System.Threading.Tasks;",
+            "using Microsoft.AspNetCore.Components;",
+            "",
+            "namespace ${1:Namespace}",
+            "{",
+            "\tpublic class ${2:${TM_FILENAME_BASE}} : ComponentBase",
+            "\t{",
+            "\t\t$0",
+            "\t}",
+            "}"
+        ]
+    },
+    "OnInit": {
+        "prefix": "bl-onInit",
+        "body": [
+            "protected override void OnInit()",
+            "{",
+            "\t$0",
+            "}"
+        ]
+    },
+    "OnInitAsync": {
+        "prefix": "bl-onInit-async",
+        "body": [
+            "protected override async Task OnInitAsync()",
+            "{",
+            "\t$0",
+            "}"
+        ]
+    },
+    "OnParametersSet": {
+        "prefix": "bl-onParametersSet",
+        "body": [
+            "protected override void OnParametersSet()",
+            "{",
+            "\t$0",
+            "}"
+        ]
+    },
+    "OnParametersSetAsync": {
+        "prefix": "bl-onParametersSet-async",
+        "body": [
+            "protected override async Task OnParametersSetAsync()",
+            "{",
+            "\t$0",
+            "}"
+        ]
+    },
+    "OnAfterRender": {
+        "prefix": "bl-onAfterRender",
+        "body": [
+            "protected override void OnAfterRender()",
+            "{",
+            "\t$0",
+            "}"
+        ]
+    },
+    "OnAfterRenderAsync": {
+        "prefix": "bl-onAfterRender-async",
+        "body": [
+            "protected override async Task OnAfterRenderAsync()",
+            "{",
+            "\t$0",
+            "}"
+        ]
+    },
+    "Event Handler": {
+        "prefix": "bl-eventHandler",
+        "body": [
+            "${1:private} void ${2:Handle}(${3:UIMouseEventArgs} ${4:e})",
+            "{",
+            "\t$0",
+            "}"
+        ]
+    },
+    "Async Event Handler": {
+        "prefix": "bl-eventHandler-async",
+        "body": [
+            "${1:private} async Task ${2:HandleAsync}(${3:UIMouseEventArgs} ${4:e})",
+            "{",
+            "\t$0",
+            "}"
+        ]
+    },
+    "Event Callback": {
+        "prefix": "bl-eventCallback",
+        "body": [
+            "[Parameter]",
+            "${1:private} EventCallback<${2:UIMouseEventArgs}> ${3:OnClick} { get; set; }"
+        ]
+    }
+}

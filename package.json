@@ -1,0 +1,45 @@
+{
+    "name": "blazor-snippet-pack",
+    "displayName": "Blazor Snippet Pack",
+    "description": "A snippet pack for Blazor.",
+    "icon": "img/icon.png",
+    "publisher": "adrianwilczynski",
+    "version": "0.0.1",
+    "engines": {
+        "vscode": "^1.34.0"
+    },
+    "categories": [
+        "Snippets"
+    ],
+    "keywords": [
+        "Blazor",
+        "Razor Components",
+        ".NET Core",
+        ".NET",
+        "Razor",
+        "C#",
+        "CSharp",
+        "ASP.NET Core",
+        "Snippet",
+        "Snippets"
+    ],
+    "contributes": {
+        "snippets": [{
+                "language": "aspnetcorerazor",
+                "path": "./snippets/razor.json"
+            },
+            {
+                "language": "razor",
+                "path": "./snippets/razor.json"
+            },
+            {
+                "language": "csharp",
+                "path": "./snippets/csharp.json"
+            },
+            {
+                "language": "html",
+                "path": "./snippets/html.json"
+            }
+        ]
+    }
+}

@@ -1,0 +1,133 @@
+{
+    "Functions": {
+        "prefix": "functions",
+        "body": [
+            "@functions {",
+            "\t$0",
+            "}"
+        ]
+    },
+    "Component": {
+        "prefix": "bl-component",
+        "body": [
+            "@page \"${1:/}\"",
+            "",
+            "$0",
+            "",
+            "@functions {",
+            "",
+            "}"
+        ]
+    },
+    "Component with HTTP call": {
+        "prefix": "bl-component-http",
+        "body": [
+            "@page \"${1:/}\"",
+            "@inject HttpClient Http",
+            "",
+            "$0",
+            "",
+            "@functions {",
+            "\t${2:private} ${3:string} ${4:Name} { get; set; }",
+            "",
+            "\tprotected override async Task OnInitAsync()",
+            "\t{",
+            "\t\t${4} = await Http.GetJsonAsync<${3}>(\"${5:api/}\");",
+            "\t}",
+            "}"
+        ]
+    },
+    "Component inheriting Component Base": {
+        "prefix": "bl-component-inherits",
+        "body": [
+            "@page \"${1:/}\"",
+            "@inherits ${2:${TM_FILENAME_BASE}Base}"
+        ]
+    },
+    "Component with Child Content": {
+        "prefix": "bl-component-child",
+        "body": [
+            "@ChildContent",
+            "",
+            "@functions {",
+            "\t[Parameter]",
+            "\tprivate RenderFragment ChildContent { get; set; }",
+            "}"
+        ]
+    },
+    "Templated Component": {
+        "prefix": "bl-component-templated",
+        "body": [
+            "@typeparam TItem",
+            "",
+            "<table>",
+            "\t<thead>",
+            "\t\t<tr>@TableHeader</tr>",
+            "\t</thead>",
+            "\t<tbody>",
+            "\t\t@foreach (var item in Items)",
+            "\t\t{",
+            "\t\t\t<tr>@RowTemplate(item)</tr>",
+            "\t\t}",
+            "\t</tbody>",
+            "\t<tfoot>",
+            "\t\t<tr>@TableFooter</tr>",
+            "\t</tfoot>",
+            "</table>",
+            "",
+            "@functions {",
+            "\t[Parameter]",
+            "\tprivate RenderFragment TableHeader { get; set; }",
+            "",
+            "\t[Parameter]",
+            "\tprivate RenderFragment<TItem> RowTemplate { get; set; }",
+            "",
+            "\t[Parameter]",
+            "\tprivate RenderFragment TableFooter { get; set; }",
+            "",
+            "\t[Parameter]",
+            "\tprivate IReadOnlyList<TItem> Items { get; set; }",
+            "}"
+        ]
+    },
+    "Router with Fallback Component": {
+        "prefix": "bl-router-fallback",
+        "body": [
+            "<Router AppAssembly=\"typeof(${1|Startup,Program|}).Assembly\" FallbackComponent=\"typeof(${2:Pages.MyFallbackRazorComponent})\" />"
+        ],
+        "description": "In a server-side app use \"Startup\", in a client-side app use \"Program\"."
+    },
+    "Route with Parameter": {
+        "prefix": "bl-route-param",
+        "body": [
+            "@page \"/${1:${TM_FILENAME_BASE}}/{${2:Id}:${3|int,bool,datetime,decimal,double,float,guid,long|}}\""
+        ]
+    },
+    "NavLink": {
+        "prefix": "bl-navlink",
+        "body": [
+            "<NavLink href=\"${1}\" Match=\"${2|NavLinkMatch.All,NavLinkMatch.Prefix|}\">${3:Home}</NavLink>"
+        ]
+    },
+    "Form Group (Label, Input, Validation Message)": {
+        "prefix": "bl-form-group",
+        "body": [
+            "<div>",
+            "\t<label for=\"@nameof(${1:model.Name})\">${2:@nameof(${1})}</label>",
+            "\t<${3:InputText} id=\"@nameof(${1})\" bind-Value=\"@${1}\" />",
+            "\t<ValidationMessage For=\"@(() => ${1})\" />",
+            "</div>"
+        ]
+    },
+    "Form with Validation": {
+        "prefix": "bl-form",
+        "body": [
+            "<EditForm Model=\"@${1:model}\" OnValidSubmit=\"@${2:HandleValidSubmit}\">",
+            "\t<DataAnnotationsValidator />",
+            "\t<ValidationSummary />",
+            "\t$0",
+            "\t<button type=\"submit\">${3:Submit}</button>",
+            "</EditForm>"
+        ]
+    }
+}
