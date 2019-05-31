@@ -4,7 +4,7 @@
     "description": "A snippet pack for Blazor.",
     "icon": "img/icon.png",
     "publisher": "adrianwilczynski",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "engines": {
         "vscode": "^1.34.0"
     },
