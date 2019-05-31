@@ -55,7 +55,7 @@ A snippet pack for Blazor.
 | bl-onAfterRender-async   | OnAfterRenderAsync   |
 
 
-## JavaScript# (javascript)
+## JavaScript (javascript)
 
 | Prefix                      | Renders                     |
 |-----------------------------|-----------------------------|
