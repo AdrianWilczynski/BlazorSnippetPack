@@ -1,0 +1,8 @@
+{
+    "Invoke C# Static Method": {
+        "prefix": "bl-cs-invoke-static",
+        "body": [
+            "DotNet.invokeMethodAsync(${1:'Assembly'}, ${2:'Identifier'});"
+        ]
+    }
+}

@@ -27,14 +27,15 @@ A snippet pack for Blazor.
 
 ## C# (csharp)
 
-| Prefix                | Renders             |
-|-----------------------|---------------------|
-| foreach-index         | Foreach with index  |
-| bl-param              | Parameter           |
-| bl-param-cascading    | Cascading Parameter |
-| bl-eventHandler       | Event Handler       |
-| bl-eventHandler-async | Async Event Handler |
-| bl-eventCallback      | Event Callback      |
+| Prefix                | Renders                     |
+|-----------------------|-----------------------------|
+| foreach-index         | Foreach with index          |
+| bl-param              | Parameter                   |
+| bl-param-cascading    | Cascading Parameter         |
+| bl-eventHandler       | Event Handler               |
+| bl-eventHandler-async | Async Event Handler         |
+| bl-eventCallback      | Event Callback              |
+| bl-js-invoke          | Invoke JavaScript Function  |
 
 ### Components
 
@@ -52,6 +53,13 @@ A snippet pack for Blazor.
 | bl-onParametersSet-async | OnParametersSetAsync |
 | bl-onAfterRender         | OnAfterRender        |
 | bl-onAfterRender-async   | OnAfterRenderAsync   |
+
+
+## JavaScript# (javascript)
+
+| Prefix                      | Renders                     |
+|-----------------------------|-----------------------------|
+| bl-cs-invoke-static         | Invoke C# Static Method     |
 
 
 ## HTML (html)

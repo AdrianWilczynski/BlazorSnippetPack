@@ -118,5 +118,11 @@
             "[Parameter]",
             "${1:private} EventCallback<${2:UIMouseEventArgs}> ${3:OnClick} { get; set; }"
         ]
+    },
+    "Invoke JavaScript Function": {
+        "prefix": "bl-js-invoke",
+        "body": [
+            "await ${1:_jSRuntime}.InvokeAsync<${2:object}>(${3:\"identifier\"}, ${4:args});"
+        ]
     }
 }
