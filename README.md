@@ -6,6 +6,7 @@ A snippet pack for Blazor\.
 
 | Prefix | Description |
 | ------ | ----------- |
+| bl\-authStateTask | AuthenticationStateTask Parameter |
 | bl\-code\-behind | Component Code Behind |
 | bl\-eventCallback | Event Callback |
 | bl\-eventCallback\-changed | Event Callback On Parameter Changed |
@@ -20,7 +21,6 @@ A snippet pack for Blazor\.
 | bl\-onParametersSet | OnParametersSet |
 | bl\-onParametersSet\-async | OnParametersSetAsync |
 | bl\-param | Parameter |
-| bl\-param\-authStateTask | AuthenticationStateTask Parameter |
 | bl\-param\-cascading | Cascading Parameter |
 | bl\-param\-unmatched | Parameter Capturing Unmatched Values  |
 | bl\-setParameters\-async | SetParametersAsync |

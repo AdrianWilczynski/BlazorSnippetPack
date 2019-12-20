@@ -21,7 +21,7 @@
         ]
     },
     "AuthenticationStateTask Parameter": {
-        "prefix": "bl-param-authStateTask",
+        "prefix": "bl-authStateTask",
         "body": [
             "[CascadingParameter]",
             "${1:private} Task<AuthenticationState> ${2:AuthenticationStateTask} { get; set; }"
