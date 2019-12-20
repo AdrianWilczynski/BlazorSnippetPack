@@ -65,6 +65,7 @@ A snippet pack for Blazor\.
 | bl\-ref | @ref Attribute |
 | bl\-typeparam | @typeparam Directive |
 | bl\-using | @using Directive |
+| bl\-validationMessage | ValidationMessage Component |
 
 ## HTML
 

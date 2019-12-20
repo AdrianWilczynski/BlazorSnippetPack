@@ -259,6 +259,12 @@
             "</div>"
         ]
     },
+    "ValidationMessage Component": {
+        "prefix": "bl-validationMessage",
+        "body": [
+            "<ValidationMessage For=\"@(() => ${1:model.Name})\" />"
+        ]
+    },
     "Form with validation": {
         "prefix": "bl-form",
         "body": [
