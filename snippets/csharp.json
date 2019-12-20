@@ -17,7 +17,7 @@
         "prefix": "bl-param-cascading",
         "body": [
             "[CascadingParameter]",
-            "${1:public} ${2:string} ${3:MyCascadingParameter} { get; set; }"
+            "${1:private} ${2:string} ${3:MyCascadingParameter} { get; set; }"
         ]
     },
     "AuthenticationStateTask Parameter": {
