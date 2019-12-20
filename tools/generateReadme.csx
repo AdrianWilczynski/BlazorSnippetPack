@@ -1,14 +1,11 @@
 #pragma warning disable RCS1018, RCS1110
 
+#load "shared.csx"
 #r "nuget: DotMarkdown, 0.1.0"
 #r "nuget: Newtonsoft.Json, 12.0.3"
 
-using System.Runtime.CompilerServices;
 using DotMarkdown;
 using Newtonsoft.Json;
-
-public static string GetScriptFolder([CallerFilePath] string path = null)
-    => Path.GetDirectoryName(path);
 
 class Extension
 {
@@ -28,18 +25,15 @@ var fileHeadingMap = new Dictionary<string, string>
     { "html", "HTML" }
 };
 
-var projectRootDirectory = Path.Join(GetScriptFolder(), "..");
-var snippetsDirectory = Path.Join(projectRootDirectory, "snippets");
-
 var extension = JsonConvert.DeserializeObject<Extension>(
-    File.ReadAllText(Path.Join(projectRootDirectory, "package.json")));
+    File.ReadAllText(Path.Join(GetProjectRoot(), "package.json")));
 
 var snippetFiles = new[] { "csharp.json", "razor.json", "html.json" }
     .Select(f => new
     {
         FileNameBase = Path.GetFileNameWithoutExtension(f),
         Snippets = JsonConvert.DeserializeObject<Dictionary<string, Snippet>>(
-                File.ReadAllText(Path.Join(snippetsDirectory, f)))
+                File.ReadAllText(Path.Join(GetSnippetsFolder(), f)))
             .OrderBy(s => s.Value.Prefix)
     });
 
@@ -74,5 +68,5 @@ using (var markdownWriter = MarkdownWriter.Create(stringBuilder))
 }
 
 File.WriteAllText(
-    Path.Join(projectRootDirectory, "README.md"),
+    Path.Join(GetProjectRoot(), "README.md"),
     stringBuilder.ToString().TrimEnd());

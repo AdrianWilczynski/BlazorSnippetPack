@@ -50,7 +50,7 @@
         ]
     },
     "@layout Directive": {
-        "prefix": "bl-layout-directive",
+        "prefix": "bl-layout",
         "body": [
             "@layout ${1:Layout}"
         ]
@@ -106,19 +106,7 @@
     "@ref Attribute": {
         "prefix": "bl-ref",
         "body": [
-            "@ref=\"{1:Property}\""
-        ]
-    },
-    "Layout": {
-        "prefix": "bl-layout",
-        "body": [
-            "@inherits LayoutComponentBase",
-            "$0",
-            "@Body",
-            "",
-            "@code {",
-            "",
-            "}"
+            "@ref=\"${1:Property}\""
         ]
     },
     "Component": {
@@ -127,6 +115,18 @@
             "@page \"${1:/}\"",
             "",
             "$0",
+            "",
+            "@code {",
+            "",
+            "}"
+        ]
+    },
+    "Layout Component": {
+        "prefix": "bl-component-layout",
+        "body": [
+            "@inherits LayoutComponentBase",
+            "$0",
+            "@Body",
             "",
             "@code {",
             "",
@@ -175,7 +175,7 @@
             "\t\t$2.${3:Notify} += $4;",
             "\t}",
             "",
-            "\tpublic async Task ${4:OnNotify}(${5:string key, int value})",
+            "\t${5:public} async Task ${4:OnNotify}(${6:string key, int value})",
             "\t{",
             "\t\tawait InvokeAsync(() =>",
             "\t\t{",
