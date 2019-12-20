@@ -2,13 +2,13 @@
     "Component Tag Helper": {
         "prefix": "bl-component-tag-helper",
         "body": [
-            "<component type=\"typeof(${1:MyComponent})\" render-mode=\"$2{|ServerPrerendered,Server,Static|}\" />"
+            "<component type=\"typeof(${1:MyComponent})\" render-mode=\"${2|ServerPrerendered,Server,Static|}\" />"
         ]
     },
     "Component Tag Helper with Parameter": {
         "prefix": "bl-component-tag-helper-param",
         "body": [
-            "<component type=\"typeof(${1:MyComponent})\" render-mode=\"$2{|ServerPrerendered,Server,Static|}\" param-${3:MyParameter}=\"${4:Value}\" />"
+            "<component type=\"typeof(${1:MyComponent})\" render-mode=\"${2|ServerPrerendered,Server,Static|}\" param-${3:MyParameter}=\"${4:Value}\" />"
         ]
     },
     "Code Block": {
@@ -79,16 +79,16 @@
             "@bind=\"${1:Property}\""
         ]
     },
-    "@bind-Property Attribute": {
-        "prefix": "bl-bind-prop",
+    "@bind-Value Attribute": {
+        "prefix": "bl-bind-value",
         "body": [
-            "@bind-${1:Property}=\"${2:Property}\""
+            "@bind-${1:Value}=\"${2:Property}\""
         ]
     },
     "@bind-value & @bind-value:event Attributes": {
         "prefix": "bl-bind-event",
         "body": [
-            "@bind-value=\"${1:Property}\" @bind-value:event=\"${2:oninput}\""
+            "@bind-${1:value}=\"${2:Property}\" @bind-$1:event=\"${3:oninput}\""
         ]
     },
     "@bind:format Attribute": {
@@ -100,7 +100,7 @@
     "@event:preventDefault Attribute": {
         "prefix": "bl-preventDefault",
         "body": [
-            "@{1:onkeypress}:preventDefault"
+            "@${1:onkeypress}:preventDefault"
         ]
     },
     "@ref Attribute": {
@@ -198,7 +198,7 @@
             "",
             "@code {",
             "\t[Parameter]",
-            "\tprivate RenderFragment ChildContent { get; set; }",
+            "\tpublic RenderFragment ChildContent { get; set; }",
             "}"
         ]
     },
@@ -224,16 +224,16 @@
             "",
             "@code {",
             "\t[Parameter]",
-            "\tprivate RenderFragment TableHeader { get; set; }",
+            "\tpublic RenderFragment TableHeader { get; set; }",
             "",
             "\t[Parameter]",
-            "\tprivate RenderFragment<TItem> RowTemplate { get; set; }",
+            "\tpublic RenderFragment<TItem> RowTemplate { get; set; }",
             "",
             "\t[Parameter]",
-            "\tprivate RenderFragment TableFooter { get; set; }",
+            "\tpublic RenderFragment TableFooter { get; set; }",
             "",
             "\t[Parameter]",
-            "\tprivate IReadOnlyList<TItem> Items { get; set; }",
+            "\tpublic IReadOnlyList<TItem> Items { get; set; }",
             "}"
         ]
     },
@@ -282,7 +282,7 @@
         "prefix": "bl-authorizeView",
         "body": [
             "<AuthorizeView>",
-            "\t${1:<p>Hello, @context.User.Identity.Name</p>}",
+            "\t${1:<p>Hello, @context.User.Identity.Name</p>}$0",
             "</AuthorizeView>"
         ]
     },
@@ -290,7 +290,7 @@
         "prefix": "bl-authorizeView-roles",
         "body": [
             "<AuthorizeView Roles=\"${1:admin, superuser}\">",
-            "\t${2:<p>You can only see this if you're an admin or superuser.</p>}",
+            "\t${2:<p>You can only see this if you're an admin or superuser.</p>}$0",
             "</AuthorizeView>"
         ]
     },
@@ -299,7 +299,7 @@
         "body": [
             "<AuthorizeView>",
             "\t<Authorized>",
-            "\t\t${1:<p>Hello, @context.User.Identity.Name</p>}",
+            "\t\t${1:<p>Hello, @context.User.Identity.Name</p>}$0",
             "\t</Authorized>",
             "\t<NotAuthorized>",
             "\t\t<p>You're not signed in.</p>",

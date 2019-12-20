@@ -3,7 +3,7 @@
         "prefix": "bl-param",
         "body": [
             "[Parameter]",
-            "${1:private} ${2:string} ${3:MyParameter} { get; set; }"
+            "public ${1:string} ${2:MyParameter} { get; set; }"
         ]
     },
     "Parameter Capturing Unmatched Values ": {
@@ -17,14 +17,14 @@
         "prefix": "bl-param-cascading",
         "body": [
             "[CascadingParameter]",
-            "${1:private} ${2:string} ${3:MyCascadingParameter} { get; set; }"
+            "${1:public} ${2:string} ${3:MyCascadingParameter} { get; set; }"
         ]
     },
     "AuthenticationStateTask Parameter": {
         "prefix": "bl-param-authStateTask",
         "body": [
             "[CascadingParameter]",
-            "private Task<AuthenticationState> AuthenticationStateTask { get; set; }"
+            "${1:private} Task<AuthenticationState> ${2:AuthenticationStateTask} { get; set; }"
         ]
     },
     "Component Code Behind": {
@@ -141,7 +141,17 @@
         "prefix": "bl-eventCallback",
         "body": [
             "[Parameter]",
-            "${1:private} EventCallback<${2:MouseEventArgs}> ${3:OnClick} { get; set; }"
+            "public EventCallback<${1:MouseEventArgs}> ${2:OnClick} { get; set; }"
+        ]
+    },
+    "Event Callback On Parameter Changed": {
+        "prefix": "bl-eventCallback-changed",
+        "body": [
+            "[Parameter]",
+            "public ${1:string} ${2:MyParameter} { get; set; }",
+            "",
+            "[Parameter]",
+            "public EventCallback<$1> $2Changed { get; set; }"
         ]
     },
     "Invoke JavaScript Function": {
