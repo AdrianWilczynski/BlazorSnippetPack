@@ -6,6 +6,13 @@
             "${1:private} ${2:string} ${3:MyParameter} { get; set; }"
         ]
     },
+    "Parameter Capturing Unmatched Values ": {
+        "prefix": "bl-param-unmatched",
+        "body": [
+            "[Parameter(CaptureUnmatchedValues = true)]",
+            "public Dictionary<string, object> ${1:Attributes} { get; set; }"
+        ]
+    },
     "Cascading Parameter": {
         "prefix": "bl-param-cascading",
         "body": [
@@ -13,37 +20,54 @@
             "${1:private} ${2:string} ${3:MyCascadingParameter} { get; set; }"
         ]
     },
-    "Component Base": {
-        "prefix": "bl-component-base",
+    "AuthenticationStateTask Parameter": {
+        "prefix": "bl-param-authStateTask",
+        "body": [
+            "[CascadingParameter]",
+            "private Task<AuthenticationState> AuthenticationStateTask { get; set; }"
+        ]
+    },
+    "Component Code Behind": {
+        "prefix": "bl-code-behind",
         "body": [
             "using System;",
             "using System.Collections.Generic;",
             "using System.Linq;",
             "using System.Threading.Tasks;",
-            "using Microsoft.AspNetCore.Components;",
             "",
             "namespace ${1:Namespace}",
             "{",
-            "\tpublic class ${2:${TM_FILENAME_BASE}} : ComponentBase",
+            "\tpublic partial class ${TM_FILENAME_BASE/(.*)\\..+$/$1/}",
             "\t{",
             "\t\t$0",
             "\t}",
             "}"
         ]
     },
-    "OnInit": {
-        "prefix": "bl-onInit",
+    "SetParametersAsync": {
+        "prefix": "bl-setParameters-async",
         "body": [
-            "protected override void OnInit()",
+            "public override async Task SetParametersAsync(ParameterView parameters)",
+            "{",
+            "\t$0",
+            "",
+            "\tawait base.SetParametersAsync(parameters);",
+            "}"
+        ]
+    },
+    "OnInitialized": {
+        "prefix": "bl-onInitialized",
+        "body": [
+            "protected override void OnInitialized()",
             "{",
             "\t$0",
             "}"
         ]
     },
-    "OnInitAsync": {
-        "prefix": "bl-onInit-async",
+    "OnInitializedAsync": {
+        "prefix": "bl-onInitialized-async",
         "body": [
-            "protected override async Task OnInitAsync()",
+            "protected override async Task OnInitializedAsync()",
             "{",
             "\t$0",
             "}"
@@ -70,7 +94,7 @@
     "OnAfterRender": {
         "prefix": "bl-onAfterRender",
         "body": [
-            "protected override void OnAfterRender()",
+            "protected override void OnAfterRender(bool firstRender)",
             "{",
             "\t$0",
             "}"
@@ -79,16 +103,26 @@
     "OnAfterRenderAsync": {
         "prefix": "bl-onAfterRender-async",
         "body": [
-            "protected override async Task OnAfterRenderAsync()",
+            "protected override async Task OnAfterRenderAsync(bool firstRender)",
             "{",
             "\t$0",
+            "}"
+        ]
+    },
+    "ShouldRender": {
+        "prefix": "bl-shouldRender",
+        "body": [
+            "protected override bool ShouldRender()",
+            "{",
+            "\t$0",
+            "\treturn true;",
             "}"
         ]
     },
     "Event Handler": {
         "prefix": "bl-eventHandler",
         "body": [
-            "${1:private} void ${2:Handle}(${3:UIMouseEventArgs} ${4:e})",
+            "${1:private} void ${2:Handle}(${3:MouseEventArgs} ${4:e})",
             "{",
             "\t$0",
             "}"
@@ -97,7 +131,7 @@
     "Async Event Handler": {
         "prefix": "bl-eventHandler-async",
         "body": [
-            "${1:private} async Task ${2:HandleAsync}(${3:UIMouseEventArgs} ${4:e})",
+            "${1:private} async Task ${2:HandleAsync}(${3:MouseEventArgs} ${4:e})",
             "{",
             "\t$0",
             "}"
@@ -107,13 +141,30 @@
         "prefix": "bl-eventCallback",
         "body": [
             "[Parameter]",
-            "${1:private} EventCallback<${2:UIMouseEventArgs}> ${3:OnClick} { get; set; }"
+            "${1:private} EventCallback<${2:MouseEventArgs}> ${3:OnClick} { get; set; }"
         ]
     },
     "Invoke JavaScript Function": {
         "prefix": "bl-js-invoke",
         "body": [
-            "await ${1:_jSRuntime}.InvokeAsync<${2:object}>(${3:\"identifier\"}, ${4:args});"
+            "await ${1:JSRuntime}.InvokeAsync<${2:object}>(${3:\"identifier\"}, ${4:args});"
+        ]
+    },
+    "Notifier Service": {
+        "prefix": "bl-notifier-service",
+        "body": [
+            "public class ${1:${TM_FILENAME_BASE}}",
+            "{",
+            "\tpublic async Task ${2:Update}(${3:string key, int value})",
+            "\t{",
+            "\t\tif ($4 != null)",
+            "\t\t{",
+            "\t\t\tawait $4.Invoke(${5:key, value});",
+            "\t\t}",
+            "\t}",
+            "",
+            "\tpublic event Func<${6:string, int}, Task> ${4:Notify};",
+            "}"
         ]
     }
 }

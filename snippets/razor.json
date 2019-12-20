@@ -1,9 +1,123 @@
 {
-    "Functions": {
-        "prefix": "functions",
+    "Component Tag Helper": {
+        "prefix": "bl-component-tag-helper",
         "body": [
-            "@functions {",
+            "<component type=\"typeof(${1:MyComponent})\" render-mode=\"$2{|ServerPrerendered,Server,Static|}\" />"
+        ]
+    },
+    "Component Tag Helper with Parameter": {
+        "prefix": "bl-component-tag-helper-param",
+        "body": [
+            "<component type=\"typeof(${1:MyComponent})\" render-mode=\"$2{|ServerPrerendered,Server,Static|}\" param-${3:MyParameter}=\"${4:Value}\" />"
+        ]
+    },
+    "Code Block": {
+        "prefix": "bl-code",
+        "body": [
+            "@code {",
             "\t$0",
+            "}"
+        ]
+    },
+    "@page Directive": {
+        "prefix": "bl-page",
+        "body": [
+            "@page \"/${1:${TM_FILENAME_BASE}}\""
+        ]
+    },
+    "@page Directive with Parameter": {
+        "prefix": "bl-page-param",
+        "body": [
+            "@page \"/${1:${TM_FILENAME_BASE}}/{${2:Id}:${3|int,bool,datetime,decimal,double,float,guid,long|}}\""
+        ]
+    },
+    "@inject Directive": {
+        "prefix": "bl-inject",
+        "body": [
+            "@inject ${1:MyService} ${2:$1}"
+        ]
+    },
+    "@using Directive": {
+        "prefix": "bl-using",
+        "body": [
+            "@using ${1:Namespace}"
+        ]
+    },
+    "@typeparam Directive": {
+        "prefix": "bl-typeparam",
+        "body": [
+            "@typeparam ${1:T}"
+        ]
+    },
+    "@layout Directive": {
+        "prefix": "bl-layout-directive",
+        "body": [
+            "@layout ${1:Layout}"
+        ]
+    },
+    "@inherits OwningComponentBase Directive": {
+        "prefix": "bl-owningComponentBase",
+        "body": [
+            "@inherits OwningComponentBase${1:<ApplicationDbContext>}"
+        ]
+    },
+    "@attribute [Authorize] Directive": {
+        "prefix": "bl-authorize",
+        "body": [
+            "@attribute [Authorize]"
+        ]
+    },
+    "@attributes Attribute": {
+        "prefix": "bl-attributes",
+        "body": [
+            "@attributes=\"${1:Attributes}\""
+        ]
+    },
+    "@bind Attribute": {
+        "prefix": "bl-bind",
+        "body": [
+            "@bind=\"${1:Property}\""
+        ]
+    },
+    "@bind-Property Attribute": {
+        "prefix": "bl-bind-prop",
+        "body": [
+            "@bind-${1:Property}=\"${2:Property}\""
+        ]
+    },
+    "@bind-value & @bind-value:event Attributes": {
+        "prefix": "bl-bind-event",
+        "body": [
+            "@bind-value=\"${1:Property}\" @bind-value:event=\"${2:oninput}\""
+        ]
+    },
+    "@bind:format Attribute": {
+        "prefix": "bl-bind-format",
+        "body": [
+            "@bind:format=\"${1:yyyy-MM-dd}\""
+        ]
+    },
+    "@event:preventDefault Attribute": {
+        "prefix": "bl-preventDefault",
+        "body": [
+            "@{1:onkeypress}:preventDefault"
+        ]
+    },
+    "@ref Attribute": {
+        "prefix": "bl-ref",
+        "body": [
+            "@ref=\"{1:Property}\""
+        ]
+    },
+    "Layout": {
+        "prefix": "bl-layout",
+        "body": [
+            "@inherits LayoutComponentBase",
+            "$0",
+            "@Body",
+            "",
+            "@code {",
+            "",
             "}"
         ]
     },
@@ -14,35 +128,67 @@
             "",
             "$0",
             "",
-            "@functions {",
+            "@code {",
             "",
+            "}"
+        ]
+    },
+    "Disposable Component": {
+        "prefix": "bl-component-disposable",
+        "body": [
+            "@implements IDisposable",
+            "",
+            "@code {",
+            "\tpublic void Dispose()",
+            "\t{",
+            "\t\t$0",
+            "\t}",
             "}"
         ]
     },
     "Component with HTTP call": {
         "prefix": "bl-component-http",
         "body": [
-            "@page \"${1:/}\"",
             "@inject HttpClient Http",
             "",
             "$0",
             "",
-            "@functions {",
+            "@code {",
             "\t${2:private} ${3:string} ${4:Name} { get; set; }",
             "",
-            "\tprotected override async Task OnInitAsync()",
+            "\tprotected override async Task OnInitializedAsync()",
             "\t{",
             "\t\t${4} = await Http.GetJsonAsync<${3}>(\"${5:api/}\");",
             "\t}",
             "}"
         ]
     },
-    "Component inheriting Component Base": {
-        "prefix": "bl-component-inherits",
+    "Component receiving notifications": {
+        "prefix": "bl-component-notify",
         "body": [
-            "@page \"${1:/}\"",
-            "@inherits ${2:${TM_FILENAME_BASE}Base}",
-            ""
+            "@inject ${1:NotifierService} ${2:Notifier}",
+            "@implements IDisposable",
+            "",
+            "@code {",
+            "\tprotected override void OnInitialized()",
+            "\t{",
+            "\t\t$2.${3:Notify} += $4;",
+            "\t}",
+            "",
+            "\tpublic async Task ${4:OnNotify}(${5:string key, int value})",
+            "\t{",
+            "\t\tawait InvokeAsync(() =>",
+            "\t\t{",
+            "\t\t\t$0",
+            "\t\t\tStateHasChanged();",
+            "\t\t});",
+            "\t}",
+            "",
+            "\tpublic void Dispose()",
+            "\t{",
+            "\t\t$2.$3 -= $4;",
+            "\t}",
+            "}"
         ]
     },
     "Component with Child Content": {
@@ -50,7 +196,7 @@
         "body": [
             "@ChildContent",
             "",
-            "@functions {",
+            "@code {",
             "\t[Parameter]",
             "\tprivate RenderFragment ChildContent { get; set; }",
             "}"
@@ -76,7 +222,7 @@
             "\t</tfoot>",
             "</table>",
             "",
-            "@functions {",
+            "@code {",
             "\t[Parameter]",
             "\tprivate RenderFragment TableHeader { get; set; }",
             "",
@@ -91,21 +237,14 @@
             "}"
         ]
     },
-    "Router with Fallback Component": {
-        "prefix": "bl-router-fallback",
-        "body": [
-            "<Router AppAssembly=\"typeof(${1|Startup,Program|}).Assembly\" FallbackComponent=\"typeof(${2:Pages.MyFallbackRazorComponent})\" />"
-        ],
-        "description": "In a server-side app use \"Startup\", in a client-side app use \"Program\"."
-    },
-    "Route with parameter": {
-        "prefix": "bl-route-param",
-        "body": [
-            "@page \"/${1:${TM_FILENAME_BASE}}/{${2:Id}:${3|int,bool,datetime,decimal,double,float,guid,long|}}\""
-        ]
-    },
     "NavLink": {
         "prefix": "bl-navlink",
+        "body": [
+            "<NavLink href=\"${1}\">${3:Home}</NavLink>"
+        ]
+    },
+    "NavLink with Match attribute": {
+        "prefix": "bl-navlink-match",
         "body": [
             "<NavLink href=\"${1}\" Match=\"${2|NavLinkMatch.All,NavLinkMatch.Prefix|}\">${3:Home}</NavLink>"
         ]
@@ -129,6 +268,43 @@
             "\t$0",
             "\t<button type=\"submit\">${3:Submit}</button>",
             "</EditForm>"
+        ]
+    },
+    "CascadingValue Component": {
+        "prefix": "bl-cascadingValue",
+        "body": [
+            "<CascadingValue Value=\"${1:Value}\">",
+            "\t$0",
+            "</CascadingValue>"
+        ]
+    },
+    "AuthorizeView Component": {
+        "prefix": "bl-authorizeView",
+        "body": [
+            "<AuthorizeView>",
+            "\t${1:<p>Hello, @context.User.Identity.Name</p>}",
+            "</AuthorizeView>"
+        ]
+    },
+    "AuthorizeView Component using Roles": {
+        "prefix": "bl-authorizeView-roles",
+        "body": [
+            "<AuthorizeView Roles=\"${1:admin, superuser}\">",
+            "\t${2:<p>You can only see this if you're an admin or superuser.</p>}",
+            "</AuthorizeView>"
+        ]
+    },
+    "AuthorizeView Component with NotAuthorized section": {
+        "prefix": "bl-authorizeView-not",
+        "body": [
+            "<AuthorizeView>",
+            "\t<Authorized>",
+            "\t\t${1:<p>Hello, @context.User.Identity.Name</p>}",
+            "\t</Authorized>",
+            "\t<NotAuthorized>",
+            "\t\t<p>You're not signed in.</p>",
+            "\t</NotAuthorized>",
+            "</AuthorizeView>"
         ]
     }
 }
