@@ -50,7 +50,7 @@ using (var markdownWriter = MarkdownWriter.Create(stringBuilder))
     markdownWriter.WriteHeading1(extension.DisplayName);
     markdownWriter.WriteLinkOrText(extension.Description);
 
-    foreach (var (snippetFile, i) in snippetFiles.Select((snippetFile, i) => (snippetFile, i)))
+    foreach (var snippetFile in snippetFiles)
     {
         markdownWriter.WriteHeading2(fileHeadingMap[snippetFile.FileNameBase]);
 
