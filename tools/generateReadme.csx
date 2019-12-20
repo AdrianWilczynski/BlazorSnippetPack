@@ -44,6 +44,11 @@ using (var markdownWriter = MarkdownWriter.Create(stringBuilder))
     markdownWriter.WriteHeading1(extension.DisplayName);
     markdownWriter.WriteLinkOrText(extension.Description);
 
+    markdownWriter.WriteLine();
+    markdownWriter.WriteLine();
+
+    markdownWriter.WriteImage("In Action", "img/InAction.gif");
+
     foreach (var snippetFile in snippetFiles)
     {
         markdownWriter.WriteHeading2(fileHeadingMap[snippetFile.FileNameBase]);

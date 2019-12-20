@@ -2,6 +2,8 @@
 
 A snippet pack for Blazor\.
 
+![In Action](img/InAction.gif)
+
 ## C\#
 
 | Prefix | Description |
