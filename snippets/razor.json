@@ -37,10 +37,28 @@
             "@inject ${1:MyService} ${2:$1}"
         ]
     },
+    "@inject JSRuntime Directive": {
+        "prefix": "bl-inject-js",
+        "body": [
+            "@inject IJSRuntime JSRuntime"
+        ]
+    },
+    "@inject HttpClient Directive": {
+        "prefix": "bl-inject-http",
+        "body": [
+            "@inject HttpClient Http"
+        ]
+    },
     "@using Directive": {
         "prefix": "bl-using",
         "body": [
             "@using ${1:Namespace}"
+        ]
+    },
+    "@implements Directive": {
+        "prefix": "bl-implements",
+        "body": [
+            "@implements ${1:IDisposable}"
         ]
     },
     "@typeparam Directive": {
@@ -112,7 +130,7 @@
     "Component": {
         "prefix": "bl-component",
         "body": [
-            "@page \"${1:/}\"",
+            "@page \"/${1:${TM_FILENAME_BASE}}\"",
             "",
             "$0",
             "",

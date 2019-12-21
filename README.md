@@ -54,7 +54,10 @@ A snippet pack for Blazor\.
 | bl\-component\-templated | Templated Component |
 | bl\-form | Form with validation |
 | bl\-form\-group | Form Group \(label, input, validation message\) |
+| bl\-implements | @implements Directive |
 | bl\-inject | @inject Directive |
+| bl\-inject\-http | @inject HttpClient Directive |
+| bl\-inject\-js | @inject JSRuntime Directive |
 | bl\-layout | @layout Directive |
 | bl\-navlink | NavLink |
 | bl\-navlink\-match | NavLink with Match attribute |
