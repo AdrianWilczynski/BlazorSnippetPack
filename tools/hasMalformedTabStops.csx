@@ -28,7 +28,7 @@ foreach (var file in Directory.GetFiles(GetSnippetsFolder()))
                 WriteLine($"    File: {Path.GetFileName(file)},");
                 WriteLine($"    Snippet: {snippet.Key},");
                 WriteLine($"    Line: {i},");
-                WriteLine($"    Text: \"{line}\"");
+                WriteLine($"    Text: {line}");
             }
         }
     }
