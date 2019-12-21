@@ -24,7 +24,7 @@ foreach (var file in Directory.GetFiles(GetSnippetsFolder()))
 
             if (match.Success)
             {
-                WriteLine("Possibly incomplete tab stop:");
+                WriteLine("Possibly malformed tab stop:");
                 WriteLine($"    File: {Path.GetFileName(file)},");
                 WriteLine($"    Snippet: {snippet.Key},");
                 WriteLine($"    Line: {i},");
