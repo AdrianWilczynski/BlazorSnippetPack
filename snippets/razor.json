@@ -272,7 +272,17 @@
         "body": [
             "<div>",
             "\t<label for=\"@nameof(${1:model.Name})\">${2:@nameof(${1})}</label>",
-            "\t<${3:InputText} id=\"@nameof(${1})\" bind-Value=\"@${1}\" />",
+            "\t<${3:InputText} id=\"@nameof(${1})\" @bind-Value=\"@${1}\" />",
+            "\t<ValidationMessage For=\"@(() => ${1})\" />",
+            "</div>"
+        ]
+    },
+    "Form Group with Bootstrap classes": {
+        "prefix": "bl-form-group-bootstrap",
+        "body": [
+            "<div class=\"form-group\">",
+            "\t<label for=\"@nameof(${1:model.Name})\">${2:@nameof(${1})}</label>",
+            "\t<${3:InputText} id=\"@nameof(${1})\" @bind-Value=\"@${1}\" class=\"form-control\" />",
             "\t<ValidationMessage For=\"@(() => ${1})\" />",
             "</div>"
         ]

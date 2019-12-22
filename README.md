@@ -54,6 +54,7 @@ A snippet pack for Blazor\.
 | bl\-component\-templated | Templated Component |
 | bl\-form | Form with validation |
 | bl\-form\-group | Form Group \(label, input, validation message\) |
+| bl\-form\-group\-bootstrap | Form Group with Bootstrap classes |
 | bl\-implements | @implements Directive |
 | bl\-inject | @inject Directive |
 | bl\-inject\-http | @inject HttpClient Directive |
