@@ -272,7 +272,7 @@
         "body": [
             "<div>",
             "\t<label for=\"@nameof(${1:model.Name})\">${2:@nameof(${1})}</label>",
-            "\t<${3:InputText} id=\"@nameof(${1})\" @bind-Value=\"@${1}\" />",
+            "\t<${3:InputText} id=\"@nameof(${1})\" @bind-Value=\"${1}\" />",
             "\t<ValidationMessage For=\"@(() => ${1})\" />",
             "</div>"
         ]
@@ -282,7 +282,7 @@
         "body": [
             "<div class=\"form-group\">",
             "\t<label for=\"@nameof(${1:model.Name})\">${2:@nameof(${1})}</label>",
-            "\t<${3:InputText} id=\"@nameof(${1})\" @bind-Value=\"@${1}\" class=\"form-control\" />",
+            "\t<${3:InputText} id=\"@nameof(${1})\" @bind-Value=\"${1}\" class=\"form-control\" />",
             "\t<ValidationMessage For=\"@(() => ${1})\" />",
             "</div>"
         ]
@@ -296,7 +296,7 @@
     "Form with validation": {
         "prefix": "bl-form",
         "body": [
-            "<EditForm Model=\"@${1:model}\" OnValidSubmit=\"@${2:HandleValidSubmit}\">",
+            "<EditForm Model=\"@${1:Model}\" OnValidSubmit=\"@${2:HandleValidSubmit}\">",
             "\t<DataAnnotationsValidator />",
             "\t<ValidationSummary />",
             "\t$0",
