@@ -42,6 +42,21 @@ var stringBuilder = new StringBuilder();
 using (var markdownWriter = MarkdownWriter.Create(stringBuilder))
 {
     markdownWriter.WriteHeading1(extension.DisplayName);
+
+    markdownWriter.WriteStartItalic();
+
+    markdownWriter.WriteLinkOrText("Created with ");
+    markdownWriter.WriteLinkOrText("https://vscodesnippetgenerator.azurewebsites.net/", "https://vscodesnippetgenerator.azurewebsites.net/");
+
+    markdownWriter.WriteLinkOrText(" (");
+    markdownWriter.WriteLinkOrText("GitHub", "https://github.com/AdrianWilczynski/VSCodeSnippetGenerator/");
+    markdownWriter.WriteLinkOrText(")");
+
+    markdownWriter.WriteEndItalic();
+
+    markdownWriter.WriteLine();
+    markdownWriter.WriteLine();
+
     markdownWriter.WriteLinkOrText(extension.Description);
 
     markdownWriter.WriteLine();

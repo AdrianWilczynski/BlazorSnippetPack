@@ -1,5 +1,7 @@
 # Blazor Snippet Pack
 
+*Created with [https://vscodesnippetgenerator.azurewebsites.net/](https://vscodesnippetgenerator.azurewebsites.net/) \([GitHub](https://github.com/AdrianWilczynski/VSCodeSnippetGenerator/)\)*
+
 A snippet pack for Blazor\.
 
 ![In Action](img/InAction.gif)
