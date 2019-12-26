@@ -38,7 +38,7 @@ A snippet pack for Blazor\.
 | bl\-authorizeView\-not | AuthorizeView Component with NotAuthorized section |
 | bl\-authorizeView\-roles | AuthorizeView Component using Roles |
 | bl\-bind | @bind Attribute |
-| bl\-bind\-event | @bind\-value & @bind\-value:event Attributes |
+| bl\-bind\-event | @bind\-value:event Attribute |
 | bl\-bind\-format | @bind:format Attribute |
 | bl\-bind\-value | @bind\-Value Attribute |
 | bl\-cascadingValue | CascadingValue Component |
@@ -55,6 +55,8 @@ A snippet pack for Blazor\.
 | bl\-form | Form with validation |
 | bl\-form\-group | Form Group \(label, input, validation message\) |
 | bl\-form\-group\-bootstrap | Form Group with Bootstrap classes |
+| bl\-form\-group\-html | Form Group \(HTML Elements\) |
+| bl\-form\-group\-html\-bootstrap | Form Group \(HTML Elements\) with Bootstrap classes |
 | bl\-implements | @implements Directive |
 | bl\-inject | @inject Directive |
 | bl\-inject\-http | @inject HttpClient Directive |

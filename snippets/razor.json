@@ -103,10 +103,10 @@
             "@bind-${1:Value}=\"${2:Property}\""
         ]
     },
-    "@bind-value & @bind-value:event Attributes": {
+    "@bind-value:event Attribute": {
         "prefix": "bl-bind-event",
         "body": [
-            "@bind-${1:value}=\"${2:Property}\" @bind-$1:event=\"${3:oninput}\""
+            "@bind-${1:value}:event=\"${2:oninput}\""
         ]
     },
     "@bind:format Attribute": {
@@ -284,6 +284,24 @@
             "\t<label for=\"@nameof(${1:model.Name})\">${2:@nameof(${1})}</label>",
             "\t<${3:InputText} id=\"@nameof(${1})\" @bind-Value=\"${1}\" class=\"form-control\" />",
             "\t<ValidationMessage For=\"@(() => ${1})\" />",
+            "</div>"
+        ]
+    },
+    "Form Group (HTML Elements)": {
+        "prefix": "bl-form-group-html",
+        "body": [
+            "<div>",
+            "\t<label for=\"@nameof(${1:Property})\">${2:@nameof(${1})}</label>",
+            "\t<input id=\"@nameof(${1})\" @bind=\"${1}\" />",
+            "</div>"
+        ]
+    },
+    "Form Group (HTML Elements) with Bootstrap classes": {
+        "prefix": "bl-form-group-html-bootstrap",
+        "body": [
+            "<div class=\"form-group\">",
+            "\t<label for=\"@nameof(${1:Property})\">${2:@nameof(${1})}</label>",
+            "\t<input id=\"@nameof(${1})\" @bind=\"${1}\" class=\"form-control\" />",
             "</div>"
         ]
     },
