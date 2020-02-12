@@ -22,13 +22,14 @@ var fileHeadingMap = new Dictionary<string, string>
 {
     { "razor", "Razor" },
     { "csharp", "C#" },
-    { "html", "HTML" }
+    { "html", "HTML" },
+    { "csproj", ".csproj (XML, MSBuild)" }
 };
 
 var extension = JsonConvert.DeserializeObject<Extension>(
     File.ReadAllText(Path.Join(GetProjectRoot(), "package.json")));
 
-var snippetFiles = new[] { "csharp.json", "razor.json", "html.json" }
+var snippetFiles = new[] { "csharp.json", "razor.json", "html.json", "csproj.json" }
     .Select(f => new
     {
         FileNameBase = Path.GetFileNameWithoutExtension(f),

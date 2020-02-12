@@ -44,6 +44,14 @@
             {
                 "language": "html",
                 "path": "./snippets/html.json"
+            },
+            {
+                "language": "xml",
+                "path": "./snippets/csproj.json"
+            },
+            {
+                "language": "msbuild",
+                "path": "./snippets/csproj.json"
             }
         ]
     }

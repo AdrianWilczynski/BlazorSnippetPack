@@ -1,0 +1,10 @@
+{
+    "Disable LinkOnBuild ": {
+        "prefix": "bl-disable-link",
+        "body": [
+            "<PropertyGroup>",
+            "\t<BlazorLinkOnBuild Condition=\"'$(Configuration)'!='Release'\">false</BlazorLinkOnBuild>",
+            "</PropertyGroup>"
+        ]
+    }
+}

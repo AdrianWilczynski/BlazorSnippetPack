@@ -82,3 +82,9 @@ A snippet pack for Blazor\.
 | github\-pages\-base | Base Path |
 | github\-pages\-spa\-404 | 404 \- Single Page Apps for GitHub Pages |
 | github\-pages\-spa\-index | Index Script \- Single Page Apps for GitHub Pages |
+
+## \.csproj \(XML, MSBuild\)
+
+| Prefix | Description |
+| ------ | ----------- |
+| bl\-disable\-link | Disable LinkOnBuild  |
