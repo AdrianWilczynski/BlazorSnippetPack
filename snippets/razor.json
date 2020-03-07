@@ -314,7 +314,7 @@
     "Form with validation": {
         "prefix": "bl-form",
         "body": [
-            "<EditForm Model=\"@${1:Model}\" OnValidSubmit=\"@${2:HandleValidSubmit}\">",
+            "<EditForm Model=\"${1:Model}\" OnValidSubmit=\"${2:HandleValidSubmit}\">",
             "\t<DataAnnotationsValidator />",
             "\t<ValidationSummary />",
             "\t$0",
